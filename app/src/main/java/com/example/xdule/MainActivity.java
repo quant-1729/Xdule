@@ -24,12 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        WebView webview1= findViewById(R.id.webview1);
-        webview1.getSettings().setJavaScriptEnabled(true);
 
-
-        webview1.setWebChromeClient(new WebChromeClient());
-        webview1.loadUrl(url);
 
         //removing the action bar
         // the app is crashing on adding the supportrequestwindowsfeature;
@@ -42,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         //Setting auto complete days
         AutoCompleteTextView atv1= findViewById(R.id.atv1);
         atv1.setAdapter(new ArrayAdapter<>(MainActivity.this,android.R.layout.simple_list_item_1, atvtext));
+
 
 
 
