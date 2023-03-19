@@ -14,4 +14,7 @@
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
     <color name="greenuse">#00C907</color>
+    <color name="blueuse">#486CE2</color>
+    <color name="abouttext">#8290A5</color>
+    <color name="aboutcard">#88B7FF</color>
 </resources>
