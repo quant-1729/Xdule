@@ -1,38 +1,26 @@
 package com.example.xdule;
 
 
-
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-
 import android.view.WindowManager;
-
-import android.webkit.WebView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
-
-import android.widget.Toast;
+import android.widget.TextView;
 import android.widget.Toolbar;
 
-import java.io.IOException;
-import java.util.Locale;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    private WebView webView;
     private Button button;
     private Toolbar toolbar;
     public AutoCompleteTextView autoCompleteTextView;
     private ImageButton imageButton;
+    public TextView textView;
+    public static String command;
 
 
 
@@ -45,52 +33,43 @@ public class MainActivity extends AppCompatActivity {
 
     DB_handeler db= new DB_handeler (MainActivity.this,"String",null,1);
 
+
     //
 
 
+    public static String getCommand() {
+        return command;
+    }
 
     @Override
         protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // getting textview
-        AutoCompleteTextView Text1= findViewById(R.id.atv1);
-        AutoCompleteTextView Text2 = findViewById(R.id.atv2);
+         AutoCompleteTextView Text1= (AutoCompleteTextView) findViewById(R.id.atv1);
+         AutoCompleteTextView Text2 = (AutoCompleteTextView) findViewById(R.id.atv2);
         String text11 = Text1.getText().toString().toUpperCase();
         String text21 = Text2.getText().toString().toUpperCase();
-        String command= db.completecommand(Text1,Text2);
-
-
+        command= db.completecommand(text11,text21);
 
 
 
             Button button1= findViewById(R.id.button1);
             button1.setOnClickListener(new View.OnClickListener() {
+
+
                 @Override
                 public void onClick(View v) {
                     Intent intent2 = new Intent(MainActivity.this, ifsunday.class);
                     Intent intent1= new Intent(MainActivity.this,Result.class);
                     startActivity(intent1);
-                    Toast.makeText(MainActivity.this, command, Toast.LENGTH_SHORT).show();
 
 
-
-                    public Cursor showdata(SQLiteDatabase ,  command){
-                        dbn=this.getWritableDatabase();
-                        Cursor res= dbn.rawQuery(comma,null);
-                        return res;}
-
-
+                    // display the result
 
 
                 }
             });
-
-
-
-
-
-
 
                     /*if(text11.equals("")){
                         Toast.makeText(MainActivity.this, "Enter the day", Toast.LENGTH_SHORT).show();}
@@ -100,13 +79,6 @@ public class MainActivity extends AppCompatActivity {
                     else if (text21.equals("")) {
                         Toast.makeText(MainActivity.this, "Enter the group number", Toast.LENGTH_SHORT).show();}
                     else{startActivity(intent1);} */
-
-
-
-
-
-
-
 
 
 

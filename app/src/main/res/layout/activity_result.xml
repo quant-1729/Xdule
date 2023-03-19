@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Result">
+
     <Toolbar
         android:id="@+id/toolbar1"
         android:layout_width="match_parent"
@@ -16,6 +17,21 @@
         app:layout_constraintTop_toTopOf="parent">
 
     </Toolbar>
+
+    <TextView
+        android:id="@+id/resultview"
+        android:layout_width="match_parent"
+        android:layout_height="685dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar1"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:hint="Text must appear here"
+
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
