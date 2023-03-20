@@ -26,20 +26,11 @@ public class Result extends AppCompatActivity {
         //removing the action bar
         // the app is crashing on adding the supportrequestwindowsfeature;
         //supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         //removing the action bar completed
-        StringBuilder sb=new StringBuilder();
+        StringBuilder sb = new StringBuilder();
 
-        TextView resultview= findViewById(R.id.resultview);
+        TextView resultview = findViewById(R.id.resultview);
 
-
-
-
-    }
-        //setitng the result
-
-
-
-
-    }
+    }}

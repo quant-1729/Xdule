@@ -59,6 +59,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
+                android:id="@+id/card1"
                 android:layout_height="200dp"
                 android:layout_below="@+id/infotext1"
                 android:layout_alignParentEnd="true"
@@ -102,6 +103,7 @@
 
                 </androidx.cardview.widget.CardView>
             </androidx.cardview.widget.CardView>
+
 
 
         </RelativeLayout>

@@ -89,17 +89,17 @@
     <TextView
         android:id="@+id/resultgrid"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="323dp"
         android:layout_marginTop="68dp"
         android:hint="Text will appear hear"
+        android:textColor="@color/light_blue_600"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button1"
-        app:layout_constraintVertical_bias="0.0"
-        android:textSize="25sp"
-        android:textColor="@color/black"/>
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

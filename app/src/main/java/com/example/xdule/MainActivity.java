@@ -1,8 +1,6 @@
 package com.example.xdule;
 
 
-import static com.example.xdule.R.id.resultgrid;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -19,8 +17,6 @@ import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.sql.SQLOutput;
-
 public class MainActivity extends AppCompatActivity {
 
     private Button button;
@@ -28,7 +24,18 @@ public class MainActivity extends AppCompatActivity {
     public AutoCompleteTextView autoCompleteTextView;
     private ImageButton imageButton;
     public TextView textView;
-    private
+
+
+
+
+
+    // starting
+
+
+
+
+
+
 
 
 
@@ -40,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     //creating DBhandeler object
 
-    DB_handeler db1= new DB_handeler (MainActivity.this,"String",null,1);
+
 
 
     //
@@ -52,10 +59,15 @@ public class MainActivity extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DB_handeler db1= new DB_handeler (MainActivity.this,"String",null,1);
+        parametersindb para= new parametersindb();
+
         // getting textview
         AutoCompleteTextView Text1= (AutoCompleteTextView) findViewById(R.id.atv1);
         AutoCompleteTextView Text2 = (AutoCompleteTextView) findViewById(R.id.atv2);
         TextView resultgrid= findViewById(R.id.resultgrid);
+
 
 
         //
@@ -76,9 +88,41 @@ public class MainActivity extends AppCompatActivity {
 
 
                     Cursor res = db1.showdata(command);
+                    StringBuilder stringBuilder=new StringBuilder();
+                    Toast.makeText(MainActivity.this,  getTableAsString(res,para.TABLE_NAME), Toast.LENGTH_SHORT).show();
+
+                   ;
 
 
-                    res.moveToFirst();
+
+
+
+
+
+
+                     //int a = res.getCount();
+                    //Toast.makeText(MainActivity.this,a, Toast.LENGTH_SHORT).show();
+
+                    /*for (int i = 0; i < res.getCount(); i++) {
+
+                        //iterate over the columns
+                        for(int j = 0; j < res.getColumnNames().length; j++){
+
+                            //append the column value to the string builder and delimit by a pipe symbol
+                            stringBuilder.append(res.getString(j) + "|");
+                        }
+                        //add a new line carriage return
+                        stringBuilder.append("\n");
+                        resultgrid.setText(resultgrid.getText().toString() + "/n" +stringBuilder+"/n");
+
+                        //move to the next row
+                        res.moveToNext();}*/
+
+
+
+
+
+
                    /* while (res.moveToNext()) {
                         Toast.makeText(MainActivity.this, "this is going in the app", Toast.LENGTH_SHORT).show();
 
@@ -88,12 +132,8 @@ public class MainActivity extends AppCompatActivity {
 
                         String str= time+" "+venue+" "+type;*/
 
-                    String strData1 = "";
-                    String strData2=" ";
-                    String strData3= " ";
-                    String strfinal=" ";
 
-                    if (res!= null) {
+                   /*f (res!= null) {
                         if (res.moveToFirst()) {
                             do {
                                 strData1 += res.getString(0);
@@ -103,8 +143,24 @@ public class MainActivity extends AppCompatActivity {
                                 resultgrid.setText(resultgrid.getText().toString() + "/n" +strfinal+"/n");
 
                             } while (res.moveToNext());
+                       }}*/
+                   /* if (res != null) {
+                        if (res.moveToFirst()) {
+                            do {
+                                String strData1 = res.getString(0);
+                                String strData2 = res.getString(1);
+                                String strData3 = res.getString(2);
+                                String strfinal = strData1 +" - "+ strData2+" - " + strData3;
+                                Log.d("DEBUG", "strData1=" + strData1 + ", strData2=" + strData2 + ", strData3=" + strData3);
+                                Log.d("DEBUG", "strfinal=" + strfinal);
+                                resultgrid.setText(resultgrid.getText().toString() + "\n" + strfinal + "\n");
+                            } while (res.moveToNext());
+                        } else {
+                            Log.d("DEBUG", "Result set is empty");
                         }
-                    }
+                    } else {
+                        Log.d("DEBUG", "Query returned null");
+                    }*/
 
                         }
 

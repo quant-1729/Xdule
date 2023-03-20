@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,15 +24,15 @@ public class DB_handeler extends SQLiteOpenHelper {
     public DB_handeler(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
-    
+
 
 
     @Override
     public void onCreate(@NonNull SQLiteDatabase db) {
         db.execSQL("CREATE TABLE TABLE1 ("+pm.Column1+" TEXT,"+pm.Column2+" VARCHAR,"+pm.Column3+" TEXT,"+pm.Column4+" TEXT,"+pm.Column5+" TEXT,"+pm.Column6+" VARCHAR );");
         db.execSQL("INSERT INTO TABLE1 ("+pm.Column1+","+pm.Column2+","+pm.Column3+","+pm.Column4+","+pm.Column5+","+pm.Column6+") VALUES ('H1', 'MONDAY', 'CCTF', 'CSE', '11:00-13:00', 'PRACTICAL')" );
-        db.execSQL("INSERT INTO TABLE1 ("+pm.Column1+","+pm.Column2+","+pm.Column3+","+pm.Column4+","+pm.Column5+","+pm.Column6+") VALUES ('H1','MONDAY','NLH1','MA','14:00-15:00','LECTURE' ), " +
-                "('H1','MONDAY','NLH1','PH2','15:00-16:00','LECTURE' ),\n" +
+        db.execSQL("INSERT INTO TABLE1 ("+pm.Column1+","+pm.Column2+","+pm.Column3+","+pm.Column4+","+pm.Column5+","+pm.Column6+") VALUES ('H1','MONDAY','NLH1','MA','14:00-15:00','LECTURE') ," +
+               "('H1','MONDAY','NLH1','PH2','15:00-16:00','LECTURE' ),\n" +
                 "('H1','MONDAY','NLH1','CSE','16:00-17:00','LECTURE' ),\n" +
                 "('H1','MONDAY','GS3','CES1','17:00-18:00','LECTURE' ),\n" +
                 "('H1','TUESDAY','NLH2','MED1','9:00-10:00','LECTURE' ),\n" +
