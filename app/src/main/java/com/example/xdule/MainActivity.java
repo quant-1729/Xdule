@@ -1,8 +1,12 @@
 package com.example.xdule;
 
 
+import static com.example.xdule.R.id.resultgrid;
+
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
@@ -10,9 +14,12 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.sql.SQLOutput;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,36 +53,66 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // getting textview
-         AutoCompleteTextView Text1= (AutoCompleteTextView) findViewById(R.id.atv1);
-         AutoCompleteTextView Text2 = (AutoCompleteTextView) findViewById(R.id.atv2);
-        String text11 = Text1.getText().toString().toUpperCase();
-        String text21 = Text2.getText().toString().toUpperCase();
-        String command= db1.completecommand(text11,text21);
+        AutoCompleteTextView Text1= (AutoCompleteTextView) findViewById(R.id.atv1);
+        AutoCompleteTextView Text2 = (AutoCompleteTextView) findViewById(R.id.atv2);
+        TextView resultgrid= findViewById(R.id.resultgrid);
 
 
+        //
 
 
-
-
-
-
-
-
-            Button button1= findViewById(R.id.button1);
+        Button button1= findViewById(R.id.button1);
             button1.setOnClickListener(new View.OnClickListener() {
 
 
                 @Override
                 public void onClick(View v) {
                     Intent intent2 = new Intent(MainActivity.this, ifsunday.class);
-                    Intent intent1= new Intent(MainActivity.this,Result.class);
-                    startActivity(intent1);
+                    Intent intent1 = new Intent(MainActivity.this, Result.class);
+
+                    String text11 = Text1.getText().toString().toUpperCase();
+                    String text21 = Text2.getText().toString().toUpperCase();
+                    String command = db1.completecommand(text11, text21);
+
+
+                    Cursor res = db1.showdata(command);
+
+
+                    res.moveToFirst();
+                   /* while (res.moveToNext()) {
+                        Toast.makeText(MainActivity.this, "this is going in the app", Toast.LENGTH_SHORT).show();
+
+                        String time = res.getString(0);
+                        String venue = res.getString(1);
+                        String type = res.getString(2);
+
+                        String str= time+" "+venue+" "+type;*/
+
+                    String strData1 = "";
+                    String strData2=" ";
+                    String strData3= " ";
+                    String strfinal=" ";
+
+                    if (res!= null) {
+                        if (res.moveToFirst()) {
+                            do {
+                                strData1 += res.getString(0);
+                                strData2 += res.getString(1);
+                                strData3 += res.getString(2);
+                                strfinal=strData1+strData2+strData3;
+                                resultgrid.setText(resultgrid.getText().toString() + "/n" +strfinal+"/n");
+
+                            } while (res.moveToNext());
+                        }
+                    }
+
+                        }
 
 
                     // display the result
 
 
-                }
+
             });
 
                     /*if(text11.equals("")){

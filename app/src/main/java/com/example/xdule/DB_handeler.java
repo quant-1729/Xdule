@@ -29,8 +29,8 @@ public class DB_handeler extends SQLiteOpenHelper {
     @Override
     public void onCreate(@NonNull SQLiteDatabase db) {
         db.execSQL("CREATE TABLE TABLE1 ("+pm.Column1+" TEXT,"+pm.Column2+" VARCHAR,"+pm.Column3+" TEXT,"+pm.Column4+" TEXT,"+pm.Column5+" TEXT,"+pm.Column6+" VARCHAR );");
-        db.execSQL("INSERT INTO TABLE1 ("+pm.Column1+","+pm.Column2+","+pm.Column3+","+pm.Column4+","+pm.Column5+","+pm.Column6+") VALUES ('H1', 'MONDAY', 'CCTF', 'CSE', '11:00-13:00', 'PRACTICAL'),\n" +
-                "('H1','MONDAY','NLH1','MA','14:00-15:00','LECTURE' ),\n" +
+        db.execSQL("INSERT INTO TABLE1 ("+pm.Column1+","+pm.Column2+","+pm.Column3+","+pm.Column4+","+pm.Column5+","+pm.Column6+") VALUES ('H1', 'MONDAY', 'CCTF', 'CSE', '11:00-13:00', 'PRACTICAL')" );
+        db.execSQL("INSERT INTO TABLE1 ("+pm.Column1+","+pm.Column2+","+pm.Column3+","+pm.Column4+","+pm.Column5+","+pm.Column6+") VALUES ('H1','MONDAY','NLH1','MA','14:00-15:00','LECTURE' ), " +
                 "('H1','MONDAY','NLH1','PH2','15:00-16:00','LECTURE' ),\n" +
                 "('H1','MONDAY','NLH1','CSE','16:00-17:00','LECTURE' ),\n" +
                 "('H1','MONDAY','GS3','CES1','17:00-18:00','LECTURE' ),\n" +
@@ -239,9 +239,9 @@ public class DB_handeler extends SQLiteOpenHelper {
 
 
 
-    public  Cursor showdata(){
+    public  Cursor showdata(String command){
         SQLiteDatabase db=this.getWritableDatabase();
-        return db.rawQuery(MainActivity.command,null);}
+        return db.rawQuery(command,null);}
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

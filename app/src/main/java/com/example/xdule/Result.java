@@ -16,6 +16,7 @@ public class Result extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,13 +32,7 @@ public class Result extends AppCompatActivity {
         StringBuilder sb=new StringBuilder();
 
         TextView resultview= findViewById(R.id.resultview);
-        Cursor res= dbresult.showdata();
-        while(res.moveToNext()){
-            String time= res.getString(5);
-            String venue= res.getString(3);
-            String type =res.getString(6);
-            sb.append(time).append(" - ").append(venue).append("-").append(type).append("\n");
-            resultview.setText(sb);}
+
 
 
 
