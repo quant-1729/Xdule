@@ -10,6 +10,10 @@ import androidx.annotation.Nullable;
 
 public class DB_handeler extends SQLiteOpenHelper {
 
+    public String getcommandfrommanactivity(String str){
+        return str;
+    }
+
 
 
     SQLiteDatabase db1;
@@ -24,7 +28,7 @@ public class DB_handeler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(@NonNull SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE TABLE1 ("+pm.Column1+" VARCHAR,"+pm.Column2+" VARCHAR,"+pm.Column3+" VARCHAR,"+pm.Column4+" VARCHAR,"+pm.Column5+" VARCHAR,"+pm.Column6+" VARCHAR );");
+        db.execSQL("CREATE TABLE TABLE1 ("+pm.Column1+" TEXT,"+pm.Column2+" VARCHAR,"+pm.Column3+" TEXT,"+pm.Column4+" TEXT,"+pm.Column5+" TEXT,"+pm.Column6+" VARCHAR );");
         db.execSQL("INSERT INTO TABLE1 ("+pm.Column1+","+pm.Column2+","+pm.Column3+","+pm.Column4+","+pm.Column5+","+pm.Column6+") VALUES ('H1', 'MONDAY', 'CCTF', 'CSE', '11:00-13:00', 'PRACTICAL'),\n" +
                 "('H1','MONDAY','NLH1','MA','14:00-15:00','LECTURE' ),\n" +
                 "('H1','MONDAY','NLH1','PH2','15:00-16:00','LECTURE' ),\n" +
@@ -224,16 +228,20 @@ public class DB_handeler extends SQLiteOpenHelper {
 
 //////// l;;;;;;;;;;;;;;gjfg
 
+
     }
+
+
     public String completecommand(String str1, String str2) {
 
         return "Select TIME, CODE, VENUE FROM TABLE1 WHERE DAY='" + str1 + "'" + "AND GROUPNO='" + str2+"'";
     }
 
 
+
     public  Cursor showdata(){
-        db1=this.getWritableDatabase();
-        return db1.rawQuery(MainActivity.command,null);}
+        SQLiteDatabase db=this.getWritableDatabase();
+        return db.rawQuery(MainActivity.command,null);}
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

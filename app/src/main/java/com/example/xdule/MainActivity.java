@@ -15,12 +15,14 @@ import android.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
+
     private Button button;
     private Toolbar toolbar;
     public AutoCompleteTextView autoCompleteTextView;
     private ImageButton imageButton;
     public TextView textView;
-    public static String command;
+    private
+
 
 
 
@@ -31,15 +33,13 @@ public class MainActivity extends AppCompatActivity {
 
     //creating DBhandeler object
 
-    DB_handeler db= new DB_handeler (MainActivity.this,"String",null,1);
+    DB_handeler db1= new DB_handeler (MainActivity.this,"String",null,1);
 
 
     //
 
 
-    public static String getCommand() {
-        return command;
-    }
+
 
     @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,14 @@ public class MainActivity extends AppCompatActivity {
          AutoCompleteTextView Text2 = (AutoCompleteTextView) findViewById(R.id.atv2);
         String text11 = Text1.getText().toString().toUpperCase();
         String text21 = Text2.getText().toString().toUpperCase();
-        command= db.completecommand(text11,text21);
+        String command= db1.completecommand(text11,text21);
+
+
+
+
+
+
+
 
 
 
@@ -111,9 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-    }
+}
 
 
 

@@ -10,6 +10,10 @@ import android.widget.TextView;
 public class Result extends AppCompatActivity {
 
     DB_handeler dbresult = new DB_handeler(Result.this, "String",null,1);
+    public String getcommandfrommainactivity(String str){
+        return str;}
+
+
 
 
     @Override
@@ -24,15 +28,19 @@ public class Result extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         //removing the action bar completed
+        StringBuilder sb=new StringBuilder();
 
         TextView resultview= findViewById(R.id.resultview);
-
         Cursor res= dbresult.showdata();
         while(res.moveToNext()){
             String time= res.getString(5);
             String venue= res.getString(3);
             String type =res.getString(6);
-            resultview.setText(time+" " +venue+"  "+type);}
+            sb.append(time).append(" - ").append(venue).append("-").append(type).append("\n");
+            resultview.setText(sb);}
+
+
+
     }
         //setitng the result
 
